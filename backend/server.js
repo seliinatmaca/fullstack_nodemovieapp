@@ -3,15 +3,19 @@ const getRequest = require("./methods/get");
 const postRequest = require("./methods/post");
 const deleteRequest = require("./methods/delete");
 const defaultRequest = require("./methods/default");
-const optionsRequest = require("./methods/options");
 
-// 1) server oluştur
-
+//1) server oluştur
 const server = http.createServer((req, res) => {
-  console.log(" 🥲 istek geldi", req.method);
+  // kaynak paylaşımında sorun yaşamamak için (CORS)
+  res.setHeader("Access-Control-Allow-Origin", "*");
 
-  // gelen isteğin method türüne göre cleint'a farklı cevaplar göndericez.
-  // kod kalabalığı olmaması için isteklere cevap gönderen fonksiyonları ayrı dosylarda tanımladık.
+  //bütün cevaplara eklenecek veri tipi headerını ekleyelim
+  res.setHeader("Content-Type", "application/json");
+
+  console.log("🥵 istek geldi", req.method);
+
+  //gelen isteğin. method türüne göre clienta farklı cevaplar gönderelim
+  //kod kalabalığı olmaması için isteklere cevap gönderen fonksiyonları ayrı dosyalarda tanımladık.
   switch (req.method) {
     case "GET":
       return getRequest(req, res);
@@ -22,17 +26,15 @@ const server = http.createServer((req, res) => {
     case "DELETE":
       return deleteRequest(req, res);
 
-    case "OPTIONS":
-      return optionsRequest(req, res);
-
     default:
       return defaultRequest(req, res);
   }
 });
 
-// 2) belirli bir porta gelen istekleri dinle
+// belirl, bir porta gelen istekleri dinle
+
 const port = 4090;
 
 server.listen(port, () => {
-  console.log(`🤣 Server ${port}' gelen istekleri dinlemeye başladı`);
+  console.log(`🥵 server ${port}' gelen istekleri dinlemeye başladı.`);
 });

@@ -3,7 +3,7 @@ const defaultRequest = (req, res) => {
   res.statusCode = 404;
 
   // cevaba göndericek içeriğin tipini header olarak ekle
-  res.setHeader("Content-Type", "application/json");
+  //res.setHeader("Content-Type", "application/json");
 
   // cevab'ın içeriğini belirlie
   res.write(JSON.stringify({ message: "İstek adresi tanımsız" }));
