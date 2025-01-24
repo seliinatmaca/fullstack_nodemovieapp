@@ -5,7 +5,7 @@
 - react-router-dom
 - react-icons
 - axios
-- @tanstack/react-query
+- @tanstack/react-query ///api isteklerini verimli atan api isteklerinin statini tutan kütüphane
 - react-toastify
 
 # Backend Teknolojiler
