@@ -1,8 +1,6 @@
-import React from "react";
-
 const Loader = () => {
   return (
-    <div className="text-center my-20">
+    <div className="text-center my-10">
       <div role="status">
         <svg
           className="inline w-8 h-8 text-gray-200 animate-spin  fill-blue-600"
